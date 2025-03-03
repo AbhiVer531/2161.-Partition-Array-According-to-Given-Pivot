@@ -1,0 +1,19 @@
+class Solution:
+    def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
+        ans = [0] * len(nums)
+        indexCurr = 0
+        indexBack = len(nums)-1
+        sameCount = 0
+        for i in range(len(nums)):
+            if nums[i] < pivot:
+                ans[indexCurr] = nums[i]
+                indexCurr+=1
+            elif nums[i] == pivot:
+                sameCount+=1
+            else:
+                ans[indexBack] = nums[i]
+                indexBack-=1
+        while indexCurr <= indexBack:
+            ans[indexCurr] = pivot
+            indexCurr+=1
+        return ans
