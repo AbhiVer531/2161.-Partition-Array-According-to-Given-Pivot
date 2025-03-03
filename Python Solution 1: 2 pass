@@ -1,0 +1,17 @@
+class Solution:
+    def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
+        ans = []
+        sameCount = 0
+        stack = []
+        for i in range(len(nums)):
+            if nums[i] < pivot:
+                ans.append(nums[i])
+            elif nums[i] == pivot:
+                sameCount+=1
+            else:
+                stack.append(nums[i])
+        for j in range(sameCount):
+            ans.append(pivot)
+        for element in stack:
+            ans.append(element)
+        return ans
